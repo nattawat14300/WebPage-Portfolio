@@ -27,6 +27,15 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     min-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+
+/* Page loaded */
+
+body.loaded {
+    opacity: 1;
 }
 
 
@@ -91,12 +100,13 @@ body {
     font-weight: 600;
     line-height: 1;
     white-space: nowrap;
-    transition: transform 0.2s ease, filter 0.2s ease;
+    transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
 }
 
 .navbar a:hover {
     transform: translateY(-3px);
     filter: brightness(1.2);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
 }
 
 
@@ -167,6 +177,12 @@ body {
     padding: 5px;
     border-radius: 50%;
     background: linear-gradient( 135deg, #D9EA00, #8DC900);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.profile-picture:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 30px rgba(166, 213, 0, 0.35);
 }
 
 .profile-picture img {
@@ -186,6 +202,18 @@ body {
 .section {
     scroll-margin-top: 30px;
     margin-bottom: 65px;
+    /* JavaScript Scroll Animation */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+
+/* JavaScript adds .show */
+
+.section.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 
@@ -227,6 +255,12 @@ body {
     padding: 20px 23px;
     border-radius: 24px;
     background: linear-gradient( 135deg, #00A943 0%, #007E45 45%, #063C2D 100%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -285,15 +319,28 @@ body {
 }
 
 
-/* Project */
+/* =====================================================
+   PROJECT
+===================================================== */
 
 .project {
     width: 100%;
     max-width: 380px;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 
-/* Project Image */
+/* JavaScript hover */
+
+.project-hover {
+    transform: translateY(-8px) scale(1.02);
+    filter: brightness(1.08);
+}
+
+
+/* =====================================================
+   PROJECT IMAGE
+===================================================== */
 
 .project img {
     display: block;
@@ -305,7 +352,9 @@ body {
 }
 
 
-/* Project Name */
+/* =====================================================
+   PROJECT NAME
+===================================================== */
 
 .project a {
     display: block;
@@ -324,16 +373,15 @@ body {
     transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-
-/* Project Hover */
-
 .project a:hover {
     transform: translateY(-3px);
     filter: brightness(1.2);
 }
 
 
-/* Last Project */
+/* =====================================================
+   LAST PROJECT
+===================================================== */
 
 .project-last {
     grid-column: 1 / 3;
@@ -376,7 +424,12 @@ body {
     color: white;
     text-decoration: none;
     font-size: 14px;
-    transition: filter 0.2s ease;
+    transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.social:hover {
+    filter: brightness(1.15);
+    transform: translateY(-2px);
 }
 
 
@@ -428,11 +481,44 @@ body {
 
 
 /* =====================================================
-   SOCIAL HOVER
+   BACK TO TOP
 ===================================================== */
 
-.social:hover {
-    filter: brightness(1.15);
+#backToTop {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient( 135deg, #78C900, #00A94F);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease, filter 0.2s ease;
+    z-index: 999;
+}
+
+
+/* Show button */
+
+#backToTop.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+
+/* Hover */
+
+#backToTop:hover {
+    filter: brightness(1.2);
+    transform: translateY(-5px);
 }
 
 
@@ -491,8 +577,17 @@ body {
     .about-card.interest {
         width: 60%;
     }
+    /* Work */
     .project {
         max-width: 320px;
+    }
+    /* Back to Top */
+    #backToTop {
+        right: 20px;
+        bottom: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
     }
 }
 
@@ -600,6 +695,14 @@ body {
     .social-icon img {
         width: 70%;
         height: 70%;
+    }
+    /* Back to Top */
+    #backToTop {
+        right: 15px;
+        bottom: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
     }
 }
 
